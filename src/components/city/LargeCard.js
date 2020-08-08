@@ -8,17 +8,20 @@ const Container = styled.div`
 
 class LargeCard extends Component {
     render() {
-        const { name, slug, source } = this.props;            
+        const { name, slug, source, host } = this.props;
+        const src = `${host}${source}`;           
 
         return (
-            <Container className="col-md-6 col-12">
-                <Link to={`/hotels?city=${slug}`}>
-                    <div>
-                        <img className="img-fluid" src={source} alt={name} />
-                        <p>{name}</p>                        
-                    </div>
-                </Link>
-            </Container>
+            <div className="col-6">
+                <Container className="col-md-6 col-12">
+                    <Link to={`/hotels?city=${slug}`}>
+                        <div>
+                            <img className="img-fluid" src={src || source} alt={name} />
+                            <p>{name}</p>                        
+                        </div>
+                    </Link>
+                </Container>
+            </div>
         );
     }
 }
