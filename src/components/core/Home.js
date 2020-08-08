@@ -10,7 +10,7 @@ class Home extends Component {
         const { cities } = this.props;
 
         return (
-            <div className="container">
+            <div className="container">                
                 {cities.length > 0 && <Gallery cities={cities} />}
             </div>
         );

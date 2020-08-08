@@ -13,33 +13,43 @@ const Container = styled.div`
     margin-top: 10px;
     margin-bottom: 20px;
     color: ${Global.color.body};
-    font-family: ${Global.font.primary};
+    font-family: ${Global.font.primary};    
 `;
 
 class Gallery extends Component {
-    renderCards() {
-        const { cities } = this.props;
-        return cities.map((city, index) => {
-            let isLarge = false;
-            
-            if (index === 0) {
-                isLarge = true;
-            }
+    renderCards(isLarge) {
+        const cities = [...this.props.cities];
 
-            return <Card {...city} host={host} key={city.slug} isLarge={isLarge} />
-        });
+        if (isLarge === "large") {
+            cities.splice(1, cities.length);
+        } else {
+            cities.splice(0, 1);
+        }
+
+        return cities.map(city =>
+            <Card {...city} host={host} key={city.slug} isLarge={isLarge === "large"} />
+        );
     }
 
     render() {
         const { cities } = this.props;
         console.log(cities);
 
-        return (
+        return (            
             <Container className="row">
                 <div className="col-md-12">
                     <h1>Explorez le monde</h1>
+                </div>                 
+                 <div className="col-12 col-md-6">
+                    <div className="row">
+                        {this.renderCards("large")}
+                    </div>
                 </div>
-                {this.renderCards()}
+                <div className="col-12 col-md-6">
+                    <div className="row">
+                        {this.renderCards()}
+                    </div>                    
+                </div>
             </Container>
         );
     }

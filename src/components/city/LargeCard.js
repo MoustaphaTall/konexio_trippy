@@ -16,12 +16,14 @@ class LargeCard extends Component {
                 <Container className="col-md-6 col-12">
                     <Link to={`/hotels?city=${slug}`}>
                         <div>
-                            <img className="img-fluid" src={src || source} alt={name} />
+                            <img className="img" src={src || source} alt={name} />
                             <p>{name}</p>                        
                         </div>
                     </Link>
                 </Container>
             </div>
+
+                
         );
     }
 }
