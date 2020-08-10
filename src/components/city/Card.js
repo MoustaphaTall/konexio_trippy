@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const Container = styled.div`
-        
+import Global from '../../Global';
+
+const Container = styled.div`    
 `;
+
+const StyledLink = styled(Link)`
+    color: ${Global.color.body};
+    font-size: ${Global.size.caption};
+    font-weight: ${Global.weight.caption}; 
+    &:hover {
+        text-decoration: none;
+    }
+`;
+
 const Image = styled.img`
+    height: 25vh;
+    
+    ${props => props.isLarge && css`
+        height: 53vh;
+    `}
     
 `;
+
 class Card extends Component {
     render() {
         const { name, source, slug, host, isLarge } = this.props;    
@@ -16,12 +33,12 @@ class Card extends Component {
 
         return (
             <Container className={size}>
-                <Link to={`/hotels?city=${slug}`}>
-                    <div>
-                        <Image className="img-fluid" src={src || source} alt={name} />
-                        <p>{name}</p>
-                    </div>
-                </Link>
+                <StyledLink to={`/hotels?city=${slug}`}>
+                    <figure>
+                        <Image className="img-fluid" src={src || source} alt={name} isLarge={isLarge} />
+                        <figcaption>{name}</figcaption>
+                    </figure>
+                </StyledLink>
             </Container>
         );
     }
