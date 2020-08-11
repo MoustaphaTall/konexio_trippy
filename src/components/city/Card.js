@@ -26,16 +26,26 @@ const Image = styled.img`
 `;
 
 class Card extends Component {
+    addDefaultSrc(evt) {
+        const placeholder = "http://via.placeholder.com/300x200";
+        evt.target.src = placeholder;
+    }
+
     render() {
-        const { name, source, slug, host, isLarge } = this.props;    
-        const src= `${host}${source}`;
+        const { name, source, slug, isLarge } = this.props;            
         const size = isLarge ? 'col-12' : 'col-6';        
 
         return (
             <Container className={size}>
                 <StyledLink to={`/hotels?city=${slug}`}>
                     <figure>
-                        <Image className="img-fluid" src={src || source} alt={name} isLarge={isLarge} />
+                        <Image 
+                            className="img-fluid" 
+                            src={source} 
+                            alt={name} 
+                            isLarge={isLarge} 
+                            onError={this.addDefaultSrc} 
+                        />
                         <figcaption>{name}</figcaption>
                     </figure>
                 </StyledLink>

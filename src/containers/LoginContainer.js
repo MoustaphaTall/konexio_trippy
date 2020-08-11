@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class LoginContainer extends Component {
-    render() {
+    render() {        
         return (
             <div>LoginContainer</div>
         );

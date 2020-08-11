@@ -26,13 +26,13 @@ class Gallery extends Component {
         }
 
         return cities.map(city =>
-            <Card {...city} host={host} key={city.slug} isLarge={isLarge === "large"} />            
+            <Card {...city} source={`${host}${city.source}`} key={city.slug} isLarge={isLarge === "large"} />            
         );
     }
 
     render() {
         const { cities } = this.props;
-        console.log(cities);
+        // console.log(cities);
 
         return (            
             <Container className="row">

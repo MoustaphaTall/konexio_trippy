@@ -6,7 +6,14 @@ class Api {
         const url = `${host}/api/home`;
         return fetch(url)
             .then(res => res.json())
-            .then(res => ({ cities: res.cities }))
+            .then(res => ({ cities: res.cities }));
+    }
+
+    getCityHotels(city) {
+        const url = `${host}/api/hotels/city/${city}`;
+        return fetch(url)
+            .then(res => res.json())
+            .then(json => ({hotels: json.results}));
     }
 }
 

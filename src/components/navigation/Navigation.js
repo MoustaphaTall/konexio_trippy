@@ -57,16 +57,17 @@ class Navigation extends Component {
     }
 
     render() {
-        const { isScrolled } = this.state;
+        const { isScrolled } = this.state;        
         return (
             <Nav 
                 className="navbar navbar-expand align-items-baseline sticky-top"                 
-                isScrolled={isScrolled}>
+                isScrolled={isScrolled}
+            >
                 
                 <StyledLink to="/" className="navbar-brand active">Trippy</StyledLink>
                 <div className="navbar-nav">                    
-                    <StyledLink to="/hotels:id" className="nav-item nav-link">Hotels</StyledLink>
-                    <StyledLink to="/hotels" className="nav-item nav-link">Restaurants</StyledLink>                    
+                    <StyledLink to="/hotels" className="nav-item nav-link">Hotels</StyledLink>                    
+                    <StyledLink to="/hotels:id" className="nav-item nav-link">Restaurants</StyledLink>
                     <StyledLink to="/login" className="nav-item nav-link">Login</StyledLink>
                     <StyledLink to="/signup" className="nav-item nav-link">Signup</StyledLink>
                 </div>

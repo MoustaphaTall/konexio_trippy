@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navigation from './components/navigation/Navigation';
 import HomeContainer from './containers/HomeContainer';
@@ -17,17 +17,16 @@ import './App.css';
 
 
 class App extends Component {
-  render() {
+  render() {    
     return (
       <Router>
         <div>
-          <Navigation />
-
+          <Navigation />          
           <Switch>            
-            <Route path="/hotels"><HotelsContainer /></Route>
-            <Route path="/login"><LoginContainer /></Route>
-            <Route path="/signup"><SignupContainer /></Route>            
             <Route path="/hotels/:id"><HotelContainer /></Route>
+            <Route path="/hotels" component={HotelsContainer}></Route>
+            <Route path="/login"><LoginContainer /></Route>
+            <Route path="/signup"><SignupContainer /></Route>                        
             <Route path="/"><HomeContainer /></Route>
             <Route path="*"><NotFoundContainer /></Route>
           </Switch>
