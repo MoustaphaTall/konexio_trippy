@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import Card from '../hotel/Card';
+import styled from 'styled-components';
 
+import Card from './Card';
+import Map from '../map/Map';
+
+import Global from '../../Global';
 import Config from '../../Config';
 const { host } = Config;
 
+const Container = styled.div`
+    font-family: ${Global.font.primary};
+    
+`;
 
 
 class Hotels extends Component {
@@ -15,15 +23,24 @@ class Hotels extends Component {
         );        
     }
     
-    render() {
+    render() {        
         const { hotels } = this.props;
-        console.log("cmp/hotel/Hotels hotels", this.props.hotels);
+        console.log("cmp/hotel/Hotels hotels", hotels);
+        
+
         return (
-            <div className="container">
+            <Container className="container-lg">
                 <div className="row">
-                    {this.renderCards()}
+                    <div className="col-6">
+                        <div className="row">
+                            {this.renderCards()}
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        <Map hotels={hotels} />
+                    </div>
                 </div>
-            </div> 
+            </Container>
         );
     }
 }

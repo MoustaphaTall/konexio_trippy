@@ -13,8 +13,8 @@ class Api {
         const url = `${host}/api/hotels/city/${city}`;
         return fetch(url)
             .then(res => res.json())
-            .then(json => ({hotels: json.results}));
-    }
+            .then(json => ({hotels: json.results, center: json.center, zoom: json.zoom}));            
+    }    
 }
 
 export default new Api();

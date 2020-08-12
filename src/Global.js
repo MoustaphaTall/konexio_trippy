@@ -4,6 +4,7 @@ const Global = {
         primary: '#00A64A',
         secondary: '#767676',
         tertiary: '#FFF',
+        stars: '#FFC700',
         transparent: 'rgba(255, 255, 255, 0.5)',
         disabled: '#CCC'
     },

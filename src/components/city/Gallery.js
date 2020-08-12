@@ -30,9 +30,8 @@ class Gallery extends Component {
         );
     }
 
-    render() {
-        const { cities } = this.props;
-        // console.log(cities);
+    render() {        
+        // console.log("cmp/city/Gallery cities", this.props.cities);
 
         return (            
             <Container className="row">

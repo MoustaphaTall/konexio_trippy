@@ -10,33 +10,39 @@ class HotelsContainer extends Component {
         super(props);
 
         this.state = {
-            hotels: []
-        }
+            hotels: [],
+            center: {},
+            zoom: 0
+        }        
     }
 
-    componentDidMount() {
-        const { hotels } = this.state;
-
-        if (hotels.length === 0) {
-            const { city } = qs.parse(this.props.location.search.replace('?', ''));        
+    componentDidMount() {        
+        const { city } = qs.parse(this.props.location.search.replace('?', ''));             
+        
+        if (city) {
             Api.getCityHotels(city)
-                .then(json => this.setState({ hotels: json.hotels }));
+                .then(json => this.setState({ hotels: json.hotels, center: json.center, zoom: json.zoom }));                                                
         }
     }
 
     renderHotels() {
         const { hotels } = this.state;
+        const { city } = qs.parse(this.props.location.search.replace('?', ''));
+
+        if (!city) {
+            return <h2>Choose a location from the homepage</h2>
+        }
 
         if (hotels.length === 0) {
-            return <h2>Choose a city from the homepage</h2>;
+            return <p>Loading...</p>;
         }
 
         return <Hotels hotels={hotels} />;
     }
 
     render() {
-        const { hotels } = this.state;        
-        console.log("containers/HotelsContainer hotels", hotels);
+        const { hotels, center, zoom } = this.state;          
+        // console.log("containers/HotelsContainer hotels", hotels);          
 
         return this.renderHotels();
     }
