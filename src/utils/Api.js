@@ -13,7 +13,7 @@ class Api {
         const url = `${host}/api/hotels/city/${city}`;
         return fetch(url)
             .then(res => res.json())
-            .then(json => ({hotels: json.results, center: json.center, zoom: json.zoom}));            
+            .then(json => ({hotels: json.results, center: { lat: json.center.lat, lng: json.center.lon }, zoom: json.zoom}));
     }    
 }
 

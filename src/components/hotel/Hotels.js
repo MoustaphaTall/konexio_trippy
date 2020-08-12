@@ -24,8 +24,8 @@ class Hotels extends Component {
     }
     
     render() {        
-        const { hotels } = this.props;
-        console.log("cmp/hotel/Hotels hotels", hotels);
+        const { hotels, center, zoom } = this.props;
+        // console.log("cmp/hotel/Hotels hotels", hotels);        
         
 
         return (
@@ -37,7 +37,7 @@ class Hotels extends Component {
                         </div>
                     </div>
                     <div className="col-6">
-                        <Map hotels={hotels} />
+                        <Map hotels={hotels} center={center} zoom={zoom} />
                     </div>
                 </div>
             </Container>

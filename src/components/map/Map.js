@@ -25,13 +25,14 @@ class Map extends Component {
     }
 
     render() {     
-        
+        const { center, zoom } = this.props;        
+        console.log("map", center, zoom)
         return (
             <Container>
                 <GoogleMapReact
                     bootstrapURLKeys={{key:`${Config.mapApiKey}` }}
-                    defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}
+                    defaultCenter={center}
+                    defaultZoom={zoom}
                 >
                     {this.renderMarkers()}
                 </GoogleMapReact>

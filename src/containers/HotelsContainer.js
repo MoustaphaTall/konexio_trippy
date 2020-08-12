@@ -26,7 +26,7 @@ class HotelsContainer extends Component {
     }
 
     renderHotels() {
-        const { hotels } = this.state;
+        const { hotels, center, zoom } = this.state;
         const { city } = qs.parse(this.props.location.search.replace('?', ''));
 
         if (!city) {
@@ -37,11 +37,11 @@ class HotelsContainer extends Component {
             return <p>Loading...</p>;
         }
 
-        return <Hotels hotels={hotels} />;
+        return <Hotels hotels={hotels} center={center} zoom={zoom} />;
     }
 
     render() {
-        const { hotels, center, zoom } = this.state;          
+        const { hotels } = this.state;          
         // console.log("containers/HotelsContainer hotels", hotels);          
 
         return this.renderHotels();
